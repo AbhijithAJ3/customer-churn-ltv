@@ -1,66 +1,46 @@
 # Customer Churn Prediction & LTV Analysis
 
-A real-world **Data Analyst / Predictive Analytics project** built using the **IBM Telco Customer Churn dataset**. The goal is to analyze customer behavior, identify churn patterns, and estimate customer lifetime value (LTV) for retention-focused business decisions.
+A telecom customer analytics project focused on **customer churn analysis** and **lifetime value (LTV) analysis** using **Python, PostgreSQL, and SQL**.
 
 ---
 
-## Project Objective
+## 📌 Project Objective
 
-- Analyze telecom customer churn behavior
+- Analyze customer churn behavior
 - Identify high-risk customer segments
-- Create a basic **LTV (Lifetime Value)** feature
-- Prepare clean data for **SQL, Power BI, and Machine Learning** workflows
+- Perform SQL-based business analysis
+- Create a foundation for EDA, Power BI, and Machine Learning
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **Python** (Pandas, NumPy, Matplotlib, Seaborn)
-- **Jupyter Notebook**
-- **SQL / PostgreSQL**
-- **Git & GitHub**
-- **Power BI** (planned)
-
----
-
-## Current Progress
-
-### ✅ Completed
-
-- Project structure setup
-- Git & GitHub collaboration workflow
-- Dataset loading
-- Data cleaning and validation
-- Missing value handling
-- Duplicate checking
-- Column standardization
-- Cleaned dataset export (`data/processed/`)
-
-### 🔄 In Progress
-
-- Exploratory Data Analysis (EDA)
-- Churn pattern visualization
-- Contract and tenure analysis
-
-### 📌 Planned
-
-- Feature engineering
-- Churn prediction model
-- LTV scoring engine
-- FastAPI integration
-- Power BI dashboard
+- Python
+- Pandas
+- NumPy
+- PostgreSQL
+- SQL
+- Git & GitHub
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 customer-churn-ltv/
 ├── data/
 │   ├── raw/
+│   │   └── Telco-Customer-Churn.csv
 │   └── processed/
+│       └── telco_customer_churn_cleaned.csv
+│
 ├── notebooks/
+│   └── 01_data_loading.ipynb
+│
 ├── sql/
+│   ├── create_tables.sql
+│   └── analysis_queries.sql
+│
 ├── README.md
 ├── requirements.txt
 └── .gitignore
@@ -68,31 +48,87 @@ customer-churn-ltv/
 
 ---
 
-## Team Workflow
+## ✅ Work Completed
 
-- `main` → Stable project branch
-- Individual branches → Feature development
-- Changes should be merged through **Pull Requests**
+### 1. Data Loading & Cleaning
 
-Example:
+- Loaded the IBM Telco Customer Churn dataset
+- Removed duplicate records
+- Handled missing values
+- Converted numeric columns
+- Standardized column names
+- Created the **LTV** column
+- Exported the cleaned dataset
 
-```bash
-git checkout -b yourname
-git push -u origin yourname
-```
+### 2. PostgreSQL Setup
+
+- Created the **customer_churn_ltv** database
+- Created the **telco_customers** table
+- Imported the cleaned CSV file successfully
+
+### 3. SQL Analysis Completed
+
+The following analyses were performed:
+
+- Total customer count
+- Churn distribution
+- Average monthly charges by churn
+- Contract type distribution
+- Average tenure by churn
+- Top customers by total charges
+- Internet service distribution
+- Churn by contract type
+- Average LTV by churn
+- Tenure > 50 months churn analysis
 
 ---
 
-## Dataset
+## 📊 Current Insights
 
-**Source:** IBM Telco Customer Churn Dataset (Kaggle / IBM Watson).
+| Metric | Result |
+|--------|--------|
+| Total Customers | 7043 |
+| Churned Customers | 1869 |
+| Churn Rate | ~26.5% |
+| Highest Risk Segment | Month-to-month |
+| Highest Internet Service Segment | Fiber optic |
 
-The dataset contains customer demographics, subscription details, billing information, tenure, internet services, payment methods, and churn status for **7,043 telecom customers**.
+Additional findings:
+
+- Churned customers have **higher average monthly charges**.
+- Retained customers have **longer average tenure**.
+- Retained customers generate **higher lifetime value (LTV)** than churned customers.
 
 ---
 
-## Author
+## 🔄 Current Status
 
-**Abhijith**
+| Task | Status |
+|------|--------|
+| Project Setup | ✅ |
+| Data Cleaning | ✅ |
+| PostgreSQL Setup | ✅ |
+| SQL Analysis | ✅ |
+| EDA Notebook | 🔄 In Progress |
+| Feature Engineering | ⏳ Pending |
+| Machine Learning | ⏳ Pending |
+| Power BI Dashboard | ⏳ Pending |
 
-B.Tech Computer Science Engineering | Data Analyst Portfolio Project
+---
+
+## 🚀 Next Step
+
+The next milestone is to complete **`notebooks/02_eda.ipynb`** with:
+
+- Visualizations using **Matplotlib** and **Seaborn**
+- Churn analysis charts
+- Business insights
+- Key findings and recommendations
+
+---
+
+## 👨‍💻 Author
+
+**Abhijith**  
+B.Tech Computer Science Engineering  
+Data Analyst Portfolio Project
