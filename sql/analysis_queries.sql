@@ -61,3 +61,18 @@ ORDER BY churn DESC;
 SELECT customerid, tenure, contract, churn
 FROM telco_customers
 WHERE tenure > 50;
+
+-- HOW MANY CHURNED CUSTOMERS BELONG TO EACH PAYMENT METHOD
+SELECT paymentmethod, COUNT(*) AS churned_customers
+FROM telco_customers
+WHERE churn = 'Yes'
+GROUP BY paymentmethod;
+
+
+-- CHURN RATE BY INTERNET SERVICE
+SELECT internetservice,
+       COUNT(*) AS total_customers,
+       SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS churned_customers,
+       ROUND(100.0 * SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM telco_customers
+GROUP BY internetservice;
