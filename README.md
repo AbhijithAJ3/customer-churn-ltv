@@ -1,134 +1,39 @@
-# Customer Churn Prediction & LTV Analysis
+# Customer Churn Prediction & LTV Engine
 
-A telecom customer analytics project focused on **customer churn analysis** and **lifetime value (LTV) analysis** using **Python, PostgreSQL, and SQL**.
+## Project Overview
 
----
+A production-oriented predictive analytics system designed for telecommunications or subscription-based businesses.
 
-## 📌 Project Objective
-
-- Analyze customer churn behavior
-- Identify high-risk customer segments
-- Perform SQL-based business analysis
-- Create a foundation for EDA, Power BI, and Machine Learning
+The project aims to analyze customer behavior, predict churn risk, estimate Customer Lifetime Value (LTV), and provide actionable insights for customer retention and marketing decisions.
 
 ---
 
-## 🛠 Tech Stack
+## Current Progress
 
-- Python
-- Pandas
-- NumPy
-- PostgreSQL
-- SQL
-- Git & GitHub
+The project has successfully progressed through the initial data analytics and churn prediction stages.
 
----
+### Completed
 
-## 📂 Project Structure
+- PostgreSQL database setup and Telco customer dataset ingestion
+- Data cleaning and preprocessing
+- Exploratory Data Analysis using Python, Pandas, and Seaborn
+- SQL-based customer and churn analysis
+- Business insights generation
+- Feature engineering
+- Categorical feature encoding
+- Train/test data preparation
+- Feature scaling
+- Churn prediction model development
+- Logistic Regression, Random Forest, and XGBoost model training
+- Model evaluation using Precision, Recall, and F1-score
+- Model comparison and selection
+- SHAP-based model explainability
+- Identification of important factors influencing churn predictions
 
-```text
-customer-churn-ltv/
-├── data/
-│   ├── raw/
-│   │   └── Telco-Customer-Churn.csv
-│   └── processed/
-│       └── telco_customer_churn_cleaned.csv
-│
-├── notebooks/
-│   └── 01_data_loading.ipynb
-│
-├── sql/
-│   ├── create_tables.sql
-│   └── analysis_queries.sql
-│
-├── README.md
-├── requirements.txt
-└── .gitignore
-```
+### Current Churn Model
+
+After comparing the trained classification models, **Logistic Regression** was selected as the current best-performing churn prediction model based on the evaluated F1-score.
+
+SHAP was used to understand the model's predictions and identify influential customer features.
 
 ---
-
-## ✅ Work Completed
-
-### 1. Data Loading & Cleaning
-
-- Loaded the IBM Telco Customer Churn dataset
-- Removed duplicate records
-- Handled missing values
-- Converted numeric columns
-- Standardized column names
-- Created the **LTV** column
-- Exported the cleaned dataset
-
-### 2. PostgreSQL Setup
-
-- Created the **customer_churn_ltv** database
-- Created the **telco_customers** table
-- Imported the cleaned CSV file successfully
-
-### 3. SQL Analysis Completed
-
-The following analyses were performed:
-
-- Total customer count
-- Churn distribution
-- Average monthly charges by churn
-- Contract type distribution
-- Average tenure by churn
-- Top customers by total charges
-- Internet service distribution
-- Churn by contract type
-- Average LTV by churn
-- Tenure > 50 months churn analysis
-
----
-
-## 📊 Current Insights
-
-| Metric | Result |
-|--------|--------|
-| Total Customers | 7043 |
-| Churned Customers | 1869 |
-| Churn Rate | ~26.5% |
-| Highest Risk Segment | Month-to-month |
-| Highest Internet Service Segment | Fiber optic |
-
-Additional findings:
-
-- Churned customers have **higher average monthly charges**.
-- Retained customers have **longer average tenure**.
-- Retained customers generate **higher lifetime value (LTV)** than churned customers.
-
----
-
-## 🔄 Current Status
-
-| Task | Status |
-|------|--------|
-| Project Setup | ✅ |
-| Data Cleaning | ✅ |
-| PostgreSQL Setup | ✅ |
-| SQL Analysis | ✅ |
-| EDA Notebook | 🔄 In Progress |
-| Feature Engineering | ⏳ Pending |
-| Machine Learning | ⏳ Pending |
-| Power BI Dashboard | ⏳ Pending |
-
----
-
-## 🚀 Next Step
-
-The next milestone is to complete **`notebooks/02_eda.ipynb`** with:
-
-- Visualizations using **Matplotlib** and **Seaborn**
-- Churn analysis charts
-- Business insights
-- Key findings and recommendations
-
----
-
-## 👨‍💻 Author
-
-**Abhijith**  
-B.Tech Computer Science Engineering  
-Data Analyst Portfolio Project
