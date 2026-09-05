@@ -3,6 +3,9 @@ import joblib
 from pathlib import Path
 from pydantic import BaseModel
 import pandas as pd
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
+import os
 
 app = FastAPI(
     title="Customer LTV Prediction API",
@@ -15,6 +18,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MODEL_PATH = BASE_DIR / "models" / "ltv_xgboost_model.pkl"
 
 model = joblib.load(MODEL_PATH)
+
+# Load environment variables
+load_dotenv()
+
+# Connect to PostgreSQL
+DATABASE_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
 
 class CustomerData(BaseModel):
     Gender: str
@@ -54,9 +64,18 @@ def predict_ltv(customer: CustomerData):
 
     remaining_ltv = max(0, float(prediction))
 
+    with engine.begin() as connection:
+        connection.execute(
+        text("""
+            INSERT INTO api_ltv_predictions (predicted_remaining_ltv)
+            VALUES (:prediction)
+        """),
+        {"prediction": remaining_ltv}
+        )
+
     return {
-        "predicted_remaining_ltv": remaining_ltv
-    }
+         "predicted_remaining_ltv": remaining_ltv
+            }
 
 @app.post("/predict/batch")
 def predict_ltv_batch(customers: list[CustomerData]):
@@ -72,10 +91,19 @@ def predict_ltv_batch(customers: list[CustomerData]):
     results = []
 
     for prediction in predictions:
-        remaining_ltv = max(0, float(prediction))
+     remaining_ltv = max(0, float(prediction))
 
-        results.append({
-            "predicted_remaining_ltv": remaining_ltv
-        })
+     with engine.begin() as connection:
+        connection.execute(
+            text("""
+                INSERT INTO api_ltv_predictions (predicted_remaining_ltv)
+                VALUES (:prediction)
+            """),
+            {"prediction": remaining_ltv}
+        )
+
+     results.append({
+        "predicted_remaining_ltv": remaining_ltv
+    })
 
     return results
