@@ -1,39 +1,71 @@
 # Customer Churn Prediction & LTV Engine
 
-## Project Overview
+An end-to-end customer analytics and machine learning project designed to identify churn risk, estimate remaining customer lifetime, and predict survival-derived Customer Lifetime Value (LTV).
 
-A production-oriented predictive analytics system designed for telecommunications or subscription-based businesses.
-
-The project aims to analyze customer behavior, predict churn risk, estimate Customer Lifetime Value (LTV), and provide actionable insights for customer retention and marketing decisions.
+The project combines **Python, SQL, PostgreSQL, Machine Learning, Survival Analysis, SHAP, FastAPI, Metabase, and Docker** to transform customer data into actionable business insights.
 
 ---
 
-## Current Progress
+## Dashboard Preview
 
-The project has successfully progressed through the initial data analytics and churn prediction stages.
+![Customer Churn & LTV Dashboard](dashboard/dashboard.jpeg)
 
-### Completed
+The interactive **Customer Churn & LTV Dashboard** provides a business-level view of customer churn and customer value.
 
-- PostgreSQL database setup and Telco customer dataset ingestion
-- Data cleaning and preprocessing
-- Exploratory Data Analysis using Python, Pandas, and Seaborn
-- SQL-based customer and churn analysis
-- Business insights generation
-- Feature engineering
-- Categorical feature encoding
-- Train/test data preparation
-- Feature scaling
-- Churn prediction model development
-- Logistic Regression, Random Forest, and XGBoost model training
-- Model evaluation using Precision, Recall, and F1-score
-- Model comparison and selection
-- SHAP-based model explainability
-- Identification of important factors influencing churn predictions
-
-### Current Churn Model
-
-After comparing the trained classification models, **Logistic Regression** was selected as the current best-performing churn prediction model based on the evaluated F1-score.
-
-SHAP was used to understand the model's predictions and identify influential customer features.
+It includes:
+- Total Customers
+- Churned Customers
+- Churn Rate
+- Average Predicted Total LTV
+- LTV Segmentation
+- Churn by Contract
+- Churn by Internet Service
+- Churn Rate by Contract
+- Contract and Internet Service filters
 
 ---
+
+## Business Problem
+
+Customer churn reduces recurring revenue and increases customer acquisition costs. At the same time, customers have different levels of potential value.
+
+This project aims to answer:
+
+- Which customers are more likely to churn?
+- What factors are associated with churn?
+- How long are active customers expected to remain?
+- What is the estimated value of active customers?
+- Which customer segments should receive higher retention priority?
+
+---
+
+## Project Workflow
+
+```text
+Customer Data
+     |
+     v
+Data Cleaning & EDA
+     |
+     +----------------------+
+     |                      |
+     v                      v
+Churn Prediction     Survival Analysis
+     |                      |
+     v                      v
+Logistic Regression   Remaining Lifetime
+                            |
+                            v
+                    Survival-derived LTV
+                            |
+                            v
+                     Tuned XGBoost
+                            |
+                            v
+                         FastAPI
+                            |
+                            v
+                      PostgreSQL
+                            |
+                            v
+                        Metabase
