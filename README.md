@@ -8,7 +8,7 @@ The project combines **Python, SQL, PostgreSQL, Machine Learning, Survival Analy
 
 ## Dashboard
 
-![Customer Churn & LTV Dashboard](dashboard/dashboard.jpeg)
+![Customer Churn & LTV Dashboard](dashboard/image.jpeg)
 
 The interactive Metabase dashboard provides:
 
